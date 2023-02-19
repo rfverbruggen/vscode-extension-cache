@@ -173,7 +173,7 @@ describe('VSCode Extension Cache Test Suite', () => {
             assert.strictEqual(extensionCache.has(key), true);
             assert.strictEqual(extensionCache.get(key)?.value, value);
             // Expiration is based on Now() thus only check if it is in the future.
-            assert.strictEqual(extensionCache.get(key)?.expiration || 0 > Math.floor(new Date().getTime() / 1000.0), true);
+            assert.strictEqual((extensionCache.get(key)?.expiration || 0) > Math.floor(new Date().getTime() / 1000.0), true);
         });
     });
 });
